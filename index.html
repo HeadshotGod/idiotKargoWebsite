@@ -228,6 +228,56 @@
       font-size: 0.85rem;
       border-top: 1px solid #1a1a1a;
     }
+    .carousel {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .carousel-track-wrap {
+      overflow: hidden;
+      border-radius: 8px;
+      flex: 1;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .carousel-btn {
+      background: #151515;
+      border: 1px solid #333;
+      color: #e0e0e0;
+      font-size: 2.2rem;
+      line-height: 1;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .carousel-btn:hover {
+      border-color: #c0392b;
+      color: #fff;
+    }
+
     @media (max-width: 600px) and (orientation: portrait) {
       header {
         height: 50vw;
@@ -311,6 +361,50 @@
     </section>
 
     <section>
+      <h2>Photos</h2>
+      <div class="carousel">
+        <button class="carousel-btn carousel-prev" aria-label="Previous">&#8249;</button>
+        <div class="carousel-track-wrap">
+          <div class="carousel-track">
+            <div class="carousel-slide"><img src="images/Carousel/BandTracksPic.jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of bass.jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of done.jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of Drums.jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_0966.JPG" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_0968.JPG" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_0969.JPG" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_0970.JPG" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_0976.JPG" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_0977.JPG" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_0977(1).JPG" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_0977(2).JPG" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_3328 copy.jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_3332 copy.jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_3332 copy(1).jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_3375 copy.jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_3392 copy.jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_3392 copy(1).jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_3394 copy.jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_3396 copy.jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_3403 copy.jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_3406 copy.jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_3410 copy.jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_3434 copy.jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_3434 copy(1).jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_3450 copy.jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_3451 copy.jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_3475 copy.jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_3525 copy.jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_3576 copy.jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of IMG_3576 copy(1).jpg" alt="Band photo"></div>
+            <div class="carousel-slide"><img src="images/Carousel/Copy of Untitled_Artwork copy.jpg" alt="Band photo"></div>
+          </div>
+        </div>
+        <button class="carousel-btn carousel-next" aria-label="Next">&#8250;</button>
+      </div>
+    </section>
+
+    <section>
       <h2>Socials</h2>
       <div class="socials">
         <a href="https://www.instagram.com/idiotkargo/" target="_blank" class="social-link social-instagram">
@@ -362,5 +456,28 @@
     &copy; 2026 Idiot-Kargo. All rights reserved.
   </footer>
 
+  <script>
+    const track = document.querySelector('.carousel-track');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prev = document.querySelector('.carousel-prev');
+    const next = document.querySelector('.carousel-next');
+    let current = 0;
+
+    function goTo(index) {
+      current = (index + slides.length) % slides.length;
+      track.style.transform = `translateX(-${current * 100}%)`;
+    }
+
+    prev.addEventListener('click', () => goTo(current - 1));
+    next.addEventListener('click', () => goTo(current + 1));
+
+    // Swipe support for mobile
+    let startX = 0;
+    track.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+    track.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+    });
+  </script>
 </body>
 </html>
