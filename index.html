@@ -157,6 +157,60 @@
       flex-shrink: 0;
     }
 
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      background: #151515;
+      border: 1px solid #222;
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: #e0e0e0;
+      font-family: inherit;
+      font-size: 0.95rem;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #c0392b;
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: #555;
+    }
+
+    .contact-form button {
+      align-self: flex-start;
+      background: #c0392b;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 28px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .contact-form button:hover {
+      background: #a93226;
+    }
+
     .member img {
       width: 100%;
       aspect-ratio: 1;
@@ -284,6 +338,17 @@
           <span>Spotify</span>
         </a>
       </div>
+    </section>
+
+    <section>
+      <h2>Get In Touch</h2>
+      <form class="contact-form" action="https://formspree.io/f/meepyqwd" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="text" name="subject" placeholder="Subject">
+        <textarea name="message" placeholder="Your message..." required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
     </section>
   </main>
 
